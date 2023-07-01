@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class videoFiles extends StatelessWidget {
+class VideoFiles extends StatelessWidget {
   final int index;
-  const videoFiles({super.key, required this.index});
+  const VideoFiles({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class videoFiles extends StatelessWidget {
                   backgroundColor: Colors.black.withOpacity(0.5),
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.volume_off_sharp,
                       color: Colors.white,
                       size: 30,
@@ -34,19 +33,19 @@ class videoFiles extends StatelessWidget {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: NetworkImage(
                             "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5DNRr2juXdwtvktwXxwuk9Usk8O.jpg"),
                       ),
                     ),
-                    videoAction(title: "LOL", icons: Icons.emoji_emotions),
-                    videoAction(title: "My List", icons: Icons.add),
-                    videoAction(title: "Share", icons: Icons.share),
-                    videoAction(title: "PLAY", icons: Icons.play_circle),
+                    VideoAction(title: "LOL", icons: Icons.emoji_emotions),
+                    VideoAction(title: "My List", icons: Icons.add),
+                    VideoAction(title: "Share", icons: Icons.share),
+                    VideoAction(title: "PLAY", icons: Icons.play_circle),
                   ],
                 )
               ],
@@ -58,10 +57,10 @@ class videoFiles extends StatelessWidget {
   }
 }
 
-class videoAction extends StatelessWidget {
+class VideoAction extends StatelessWidget {
   final IconData icons;
   final String title;
-  const videoAction({super.key, required this.title, required this.icons});
+  const VideoAction({super.key, required this.title, required this.icons});
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +75,7 @@ class videoAction extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.white,
             ),

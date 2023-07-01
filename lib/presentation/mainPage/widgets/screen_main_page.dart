@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
-import 'package:netflix_app/presentation/fastLaughs/fastLaughs.dart';
+import 'package:netflix_app/presentation/fastLaughs/FastLaugh.dart';
 import 'package:netflix_app/presentation/home/homePage.dart';
 import 'package:netflix_app/presentation/mainPage/widgets/bottom_navigation.dart';
 import 'package:netflix_app/presentation/screenDownloads/downloadPage.dart';
@@ -13,7 +13,7 @@ class screenMainpage extends StatelessWidget {
   final _pages = [
     homePage(),
     newhotPage(),
-    fastLaughs(),
+    FastLaughs(),
     searchPage(),
     downloadPage()
   ];

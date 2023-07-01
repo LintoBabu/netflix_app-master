@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/presentation/fastLaughs/widgets/videoFiles.dart';
+import 'package:netflix_app/presentation/FastLaughs/widgets/videoFiles.dart';
 
-class fastLaughs extends StatelessWidget {
-  const fastLaughs({Key? key}) : super(key: key);
+class FastLaughs extends StatelessWidget {
+  const FastLaughs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class fastLaughs extends StatelessWidget {
           children: List.generate(
             10,
             (index) {
-              return videoFiles(
+              return VideoFiles(
                 index: index,
               );
             },
