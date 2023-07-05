@@ -15,3 +15,6 @@ TextStyle khomeTextstyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.bold,
 );
+
+const temporaryImage =
+    "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg";
