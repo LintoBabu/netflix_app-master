@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/colors/constants.dart';
-import 'package:netflix_app/presentation/home/widgets/CustomButtonWidget.dart';
-import 'package:netflix_app/presentation/new&hot/widgets/commingSoon.dart';
 
-import '../widgets/appBarWidget.dart';
+import 'package:netflix_app/presentation/new&hot/widgets/commingSoon.dart';
+import 'package:netflix_app/presentation/new&hot/widgets/everyoneWatching.dart';
 
 class newhotPage extends StatelessWidget {
   const newhotPage({Key? key}) : super(key: key);
@@ -75,8 +73,9 @@ class newhotPage extends StatelessWidget {
   }
 
   _buildEveryoneWatching() {
-    return Center(
-      child: Text("Hello"),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (BuildContext context, index) => EveryonesWatchingWidget(),
     );
   }
 }

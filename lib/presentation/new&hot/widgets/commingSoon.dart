@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/colors/constants.dart';
 import '../../home/widgets/CustomButtonWidget.dart';
+import '../../widgets/videoWidget.dart';
 
 class ComminSoonWidget extends StatelessWidget {
   const ComminSoonWidget({
@@ -39,34 +40,7 @@ class ComminSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 200,
-                    child: Image.network(
-                      temporaryImage,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 10,
-                    child: CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.black.withOpacity(0.5),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.volume_off_sharp,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              VideoWidget(),
               Row(
                 children: [
                   Text(
