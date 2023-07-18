@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/downloads/downloads_bloc.dart';
 import 'package:netflix_app/core/colors/colors.dart';
+import 'package:netflix_app/domains/core/di/injectable.dart';
 import 'package:netflix_app/presentation/mainPage/widgets/screen_main_page.dart';
+import 'package:bloc/bloc.dart';
 
-void main() {
+Future<void> main() async {
+  await configureInjection();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -12,7 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+     return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (ctx) => getIt<DownloadsBloc>(),
+        ),
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -23,6 +35,8 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                 ),
                 bodyText2: TextStyle(color: Colors.white))),
-        home: screenMainpage());
+        home: screenMainpage(),
+      ),
+    );
   }
 }

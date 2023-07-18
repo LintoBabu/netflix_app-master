@@ -19,3 +19,5 @@ TextStyle khomeTextstyle = TextStyle(
 
 const temporaryImage =
     "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg";
+
+const appendImage = "https://image.tmdb.org/t/p/w500/";
