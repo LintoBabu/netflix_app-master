@@ -57,7 +57,7 @@ class _homePageState extends State<homePage> {
                 ),
                 ScrollNotifier.value == true
                     ? AnimatedContainer(
-                  duration: Duration(milliseconds: 1000),
+                        duration: Duration(milliseconds: 1000),
                         width: double.infinity,
                         height: 90,
                         color: Colors.black.withOpacity(0.3),

@@ -29,7 +29,12 @@ class searchPage extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             kheight,
-            Expanded(child: screenSearch())
+            // Expanded(
+            //   child: screenSearch(),
+            // )
+            Expanded(
+              child: SearchIdle(),
+            )
           ],
         ),
       ),
