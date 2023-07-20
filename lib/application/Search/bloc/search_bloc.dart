@@ -39,31 +39,53 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         ),
       );
       final _result = await _downloadService.getDownloads();
-      _result.fold(
+      final _state = _result.fold(
         (MainFailure f) {
-          emit(
-            SearchState(
-              seachResultList: [],
-              idleList: [],
-              isLoading: false,
-              isError: true,
-            ),
+          return SearchState(
+            seachResultList: [],
+            idleList: [],
+            isLoading: false,
+            isError: true,
           );
         },
         (List<Downloads> list) {
-          emit(
-            SearchState(
-              seachResultList: [],
-              idleList: list,
-              isLoading: false,
-              isError: false,
-            ),
+          return SearchState(
+            seachResultList: [],
+            idleList: list,
+            isLoading: false,
+            isError: false,
           );
         },
       );
+      emit(_state);
     });
-    on<SearchMovies>((event, emit) {
-      _searchService.SearchMovies(MovieQuery: event.movieQuery);
+    on<SearchMovies>((event, emit) async {
+      emit(
+        SearchState(
+          seachResultList: [],
+          idleList: [],
+          isLoading: true,
+          isError: false,
+        ),
+      );
+      final _result =
+          await _searchService.SearchMovies(MovieQuery: event.movieQuery);
+      final _state = _result.fold((MainFailure f) {
+        return SearchState(
+          seachResultList: [],
+          idleList: [],
+          isLoading: false,
+          isError: true,
+        );
+      }, (SearchResp r) {
+        return SearchState(
+          seachResultList: r.results,
+          idleList: [],
+          isLoading: false,
+          isError: false,
+        );
+      });
+      emit(_state);
     });
   }
 }

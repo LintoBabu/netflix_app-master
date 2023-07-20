@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
+import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/core/colors/constants.dart';
 import 'package:netflix_app/presentation/search/widgets/title.dart';
-
-const imagerurl =
-    "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5DNRr2juXdwtvktwXxwuk9Usk8O.jpg";
 
 class screenSearch extends StatelessWidget {
   const screenSearch({super.key});
@@ -16,13 +16,20 @@ class screenSearch extends StatelessWidget {
         SearchTitle(title: "Movies & TV"),
         kheight,
         Expanded(
-          child: GridView.count(
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-              childAspectRatio: 1 / 1.4,
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              children: List.generate(20, (index) => mainCard())),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return GridView.count(
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1 / 1.4,
+                  shrinkWrap: true,
+                  crossAxisCount: 3,
+                  children: List.generate(20, (index) {
+                    final movie = state.seachResultList[index];
+                    return mainCard(imageUrl: movie.PosterImageUrl ?? "");
+                  }));
+            },
+          ),
         )
       ],
     );
@@ -30,14 +37,16 @@ class screenSearch extends StatelessWidget {
 }
 
 class mainCard extends StatelessWidget {
-  const mainCard({super.key});
+  final String imageUrl;
+
+  const mainCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(imagerurl), fit: BoxFit.cover),
+          image:
+              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(7)),
     );
   }
