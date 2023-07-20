@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/application/downloads/downloads_bloc.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/domains/core/di/injectable.dart';
 import 'package:netflix_app/presentation/mainPage/widgets/screen_main_page.dart';
-import 'package:bloc/bloc.dart';
 
 Future<void> main() async {
   await configureInjection();
@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (ctx) => getIt<DownloadsBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<SearchBloc>(),
         ),
       ],
       child: MaterialApp(

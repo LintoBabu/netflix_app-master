@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/presentation/search/widgets/searchIdle.dart';
 import 'package:netflix_app/presentation/search/widgets/search_result.dart';
 
@@ -10,6 +12,9 @@ class searchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      BlocProvider.of<SearchBloc>(context).add(Initialize());
+    });
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),

@@ -1,10 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:netflix_app/core/colors/constants.dart';
 part 'search_resp.g.dart';
 
 @JsonSerializable()
 class SearchResp {
   @JsonKey(name: 'results')
-  List<Result> results;
+  List<SearchResultData> results;
 
   SearchResp({this.results = const []});
 
@@ -16,7 +17,7 @@ class SearchResp {
 }
 
 @JsonSerializable()
-class Result {
+class SearchResultData {
   @JsonKey(name: 'id')
   int? id;
 
@@ -26,15 +27,17 @@ class Result {
   @JsonKey(name: 'poster_path')
   String? posterPath;
 
-  Result({
+  String get PosterImageUrl =>  '$appendImage$posterPath';
+
+  SearchResultData({
     this.id,
     this.originalTitle,
     this.posterPath,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) {
-    return _$ResultFromJson(json);
+  factory SearchResultData.fromJson(Map<String, dynamic> json) {
+    return _$SearchResultDataFromJson(json);
   }
 
-  Map<String, dynamic> toJson() => _$ResultToJson(this);
+  Map<String, dynamic> toJson() => _$SearchResultDataToJson(this);
 }
