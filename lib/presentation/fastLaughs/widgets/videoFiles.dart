@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/colors/constants.dart';
+import 'package:netflix_app/domains/downloads/Models/downloads.dart';
 
-class VideoFiles extends StatelessWidget {
+class VideoListItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final Downloads movieData;
+
+  const VideoListItemInheritedWidget({
+    Key? key,
+    required this.widget,
+    required this.movieData,
+  }) : super(key: key, child: widget);
+
+  @override
+  bool updateShouldNotify(covariant VideoListItemInheritedWidget oldWidget) {
+    return oldWidget.movieData != movieData;
+  }
+
+  static VideoListItemInheritedWidget? of(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<VideoListItemInheritedWidget>();
+  }
+}
+
+class VideoListItem extends StatelessWidget {
   final int index;
-  const VideoFiles({super.key, required this.index});
+  const VideoListItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        VideoListItemInheritedWidget.of(context)?.movieData.posterPath;
     return Stack(
       children: [
         Container(
@@ -33,13 +58,14 @@ class VideoFiles extends StatelessWidget {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage(
-                            "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5DNRr2juXdwtvktwXxwuk9Usk8O.jpg"),
+                        backgroundImage: posterPath == null
+                            ? null
+                            : NetworkImage('$appendImage$posterPath'),
                       ),
                     ),
                     VideoAction(title: "LOL", icons: Icons.emoji_emotions),
