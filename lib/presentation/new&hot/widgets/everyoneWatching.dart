@@ -5,9 +5,15 @@ import '../../home/widgets/CustomButtonWidget.dart';
 import '../../widgets/videoWidget.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
-  const EveryonesWatchingWidget({
-    super.key,
-  });
+  final String posterPath;
+  final String description;
+  final String movieName;
+
+  const EveryonesWatchingWidget(
+      {super.key,
+      required this.posterPath,
+      required this.description,
+      required this.movieName});
 
   @override
   Widget build(BuildContext context) {

@@ -5,9 +5,21 @@ import '../../home/widgets/CustomButtonWidget.dart';
 import '../../widgets/videoWidget.dart';
 
 class ComminSoonWidget extends StatelessWidget {
-  const ComminSoonWidget({
-    super.key,
-  });
+  final String id;
+  final String description;
+  final String day;
+  final String month;
+  final String posterPath;
+  final String movieName;
+
+  const ComminSoonWidget(
+      {super.key,
+      required this.id,
+      required this.description,
+      required this.day,
+      required this.month,
+      required this.posterPath,
+      required this.movieName});
 
   @override
   Widget build(BuildContext context) {

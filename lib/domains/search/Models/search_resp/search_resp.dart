@@ -18,14 +18,13 @@ class SearchResp {
 
 @JsonSerializable()
 class SearchResultData {
-
   @JsonKey(name: 'original_title')
   String? originalTitle;
 
   @JsonKey(name: 'poster_path')
   String? posterPath;
 
-  String get PosterImageUrl =>  '$appendImage$posterPath';
+  String get PosterImageUrl => '$appendImage$posterPath';
 
   SearchResultData({
     this.originalTitle,

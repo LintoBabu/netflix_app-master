@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/HotAndNew/hot_and_new_bloc.dart';
 import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/application/downloads/downloads_bloc.dart';
 import 'package:netflix_app/application/fast_laugh/fast_laugh_bloc.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<FastLaughBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<HotAndNewBloc>(),
         ),
       ],
       child: MaterialApp(

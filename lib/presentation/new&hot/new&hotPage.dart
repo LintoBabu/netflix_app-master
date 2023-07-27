@@ -57,25 +57,25 @@ class newhotPage extends StatelessWidget {
             ),
           ),
         ),
-        body: TabBarView(children: [
-          _buildCommingSoon(),
-          _buildEveryoneWatching(),
-        ]),
+        // body: TabBarView(children: [
+        //   _buildCommingSoon(),
+        //   _buildEveryoneWatching(),
+        // ]),
       ),
     );
   }
 
-  _buildCommingSoon() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, index) => ComminSoonWidget(),
-    );
-  }
-
-  _buildEveryoneWatching() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, index) => EveryonesWatchingWidget(),
-    );
-  }
+  // _buildCommingSoon() {
+  //   return ListView.builder(
+  //     itemCount: 10,
+  //     itemBuilder: (BuildContext context, index) => ComminSoonWidget(),
+  //   );
+  // }
+  //
+  // _buildEveryoneWatching() {
+  //   return ListView.builder(
+  //     itemCount: 10,
+  //     itemBuilder: (BuildContext context, index) => EveryonesWatchingWidget(),
+  //   );
+  // }
 }

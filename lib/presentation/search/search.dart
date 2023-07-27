@@ -26,7 +26,7 @@ class searchPage extends StatelessWidget {
           children: [
             CupertinoSearchTextField(
               onChanged: (value) {
-                if (value.isEmpty){
+                if (value.isEmpty) {
                   return;
                 }
                 _debouncer.run(() {

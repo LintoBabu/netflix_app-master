@@ -32,11 +32,11 @@ class FastLaughs extends StatelessWidget {
           } else {
             return PageView(
               scrollDirection: Axis.vertical,
-              children: List.generate(state.videoList.length, (index) {
+              children: List.generate(state.videosList.length, (index) {
                 return VideoListItemInheritedWidget(
-                    widget:
-                        VideoListItem(key: Key(index.toString()), index: index),
-                    movieData: state.videoList[index]);
+                    widget: VideoListItemz(
+                        key: Key(index.toString()), index: index),
+                    movieData: state.videosList[index]);
               }),
             );
           }
