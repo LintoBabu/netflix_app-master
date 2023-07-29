@@ -2,9 +2,10 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 
 class NumberCard extends StatelessWidget {
-  const NumberCard({super.key, required this.index});
+  const NumberCard({super.key, required this.index, required this.imageUrl});
 
   final int index;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,9 @@ class NumberCard extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/oftZNfyTVNU7IfOqoGLoT8MGvNs.jpg"),
+                  image: NetworkImage(imageUrl),
                 ),
               ),
             ),

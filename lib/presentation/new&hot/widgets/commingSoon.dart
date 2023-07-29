@@ -33,11 +33,11 @@ class ComminSoonWidget extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "FEB ",
+                month,
                 style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
               Text(
-                "11 ",
+                day,
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -52,46 +52,57 @@ class ComminSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              VideoWidget(),
+              VideoWidget(
+                url: posterPath,
+              ),
               Row(
                 children: [
-                  Text(
-                    "TALL GIRL 2",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        letterSpacing: -2),
+                  Expanded(
+                    child: FittedBox(
+                      child: Text(
+                        movieName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
                   ),
-                  Spacer(),
-                  CustomButton(
-                    icon: Icons.notifications_active,
-                    title: "Remind me",
-                    iconSize: 20,
-                    textSize: 12,
-                  ),
-                  kwidth,
-                  CustomButton(
-                    icon: Icons.info,
-                    title: "info",
-                    iconSize: 20,
-                    textSize: 12,
-                  ),
-                  kwidth
                 ],
               ),
+              CustomButton(
+                icon: Icons.notifications_active,
+                title: "Remind me",
+                iconSize: 20,
+                textSize: 12,
+              ),
+              kwidth,
+              CustomButton(
+                icon: Icons.info,
+                title: "info",
+                iconSize: 20,
+                textSize: 12,
+              ),
+              kwidth,
               kheight,
-              Text("Comming on Friday"),
+              Text("Comming on $day $month"),
               kheight,
               Text(
-                "Tall Girl 2",
+                movieName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 10,
                 ),
               ),
               kheight,
               Text(
-                "Landing the lead in the school musical is a dream come true for Jodi, until the pressure sends her confidence — and her relationship — into a tailspin.",
+                description,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(color: Colors.grey),
               )
             ],

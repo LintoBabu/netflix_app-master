@@ -8,6 +8,8 @@ import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/domains/core/di/injectable.dart';
 import 'package:netflix_app/presentation/mainPage/widgets/screen_main_page.dart';
 
+import 'application/homePage/home_bloc.dart';
+
 Future<void> main() async {
   await configureInjection();
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<HotAndNewBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<HomeBloc>(),
         ),
       ],
       child: MaterialApp(

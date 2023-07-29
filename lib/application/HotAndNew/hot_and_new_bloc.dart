@@ -15,17 +15,63 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
   final HotandNewService _HotandNewService;
   HotAndNewBloc(this._HotandNewService) : super(HotAndNewState.initial()) {
     on<LoadDataCommingSoon>((event, emit) async {
+      emit(
+        HotAndNewState(
+          commingSoonList: [],
+          EveryOneIsWatchingList: [],
+          isLoading: true,
+          hasError: false,
+        ),
+      );
+
       final _result = await _HotandNewService.getHotAndMovieData();
-      _result.fold((MainFailure failure) {
+
+      final newState = _result.fold((MainFailure failure) {
         return HotAndNewState(
           commingSoonList: [],
           EveryOneIsWatchingList: [],
           isLoading: false,
           hasError: true,
         );
-      }, (HotAndNewResp resp) {});
+      }, (HotAndNewResp resp) {
+        return HotAndNewState(
+          commingSoonList: resp.results,
+          EveryOneIsWatchingList: state.EveryOneIsWatchingList,
+          isLoading: false,
+          hasError: false,
+        );
+      });
+      emit(newState);
     });
 
-    on<LoadDataEveryoneWatching>((event, emit) {});
+    on<LoadDataEveryoneWatching>((event, emit) async {
+      emit(
+        HotAndNewState(
+          commingSoonList: [],
+          EveryOneIsWatchingList: [],
+          isLoading: true,
+          hasError: false,
+        ),
+      );
+
+      final _result = await _HotandNewService.getHotAndTvData();
+
+      final newState = _result.fold((MainFailure failure) {
+        return HotAndNewState(
+          commingSoonList: [],
+          EveryOneIsWatchingList: [],
+          isLoading: false,
+          hasError: true,
+        );
+      }, (HotAndNewResp resp) {
+        return HotAndNewState(
+          commingSoonList: state.commingSoonList,
+          EveryOneIsWatchingList: resp.results,
+          isLoading: false,
+          hasError: false,
+        );
+      });
+      emit(newState);
+    });
   }
 }

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../core/colors/constants.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String url;
   const VideoWidget({
     super.key,
+    required this.url,
   });
 
   @override
@@ -15,8 +17,28 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            temporaryImage,
+            url,
             fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                );
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return Center(
+                child: Icon(
+                  Icons.wifi,
+                  color: Colors.white,
+                ),
+              );
+            },
           ),
         ),
         Positioned(

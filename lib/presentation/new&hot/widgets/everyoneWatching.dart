@@ -22,7 +22,7 @@ class EveryonesWatchingWidget extends StatelessWidget {
       children: [
         kheight,
         Text(
-          "Friends",
+          movieName,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
@@ -30,11 +30,15 @@ class EveryonesWatchingWidget extends StatelessWidget {
         ),
         kheight,
         Text(
-          "This hit sitcom follows the merry misadventures of six 20-something pals as they navigate the pitfalls of work, life and love in 1990s Manhattan.",
+          description,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(color: Colors.grey),
         ),
         kheight50,
-        VideoWidget(),
+        VideoWidget(
+          url: posterPath,
+        ),
         kheight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

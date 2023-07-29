@@ -6,9 +6,11 @@ import 'mainTitle.dart';
 
 class mainTitlleCards extends StatelessWidget {
   final String title;
+  final List<String> posterList;
   const mainTitlleCards({
     required this.title,
     super.key,
+    required this.posterList,
   });
 
   @override
@@ -23,8 +25,10 @@ class mainTitlleCards extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              10,
-              (index) => mainCarder(),
+              posterList.length,
+              (index) => mainCarder(
+                imageUrl: posterList[index],
+              ),
             ),
           ),
         )
