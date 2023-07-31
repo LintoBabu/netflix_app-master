@@ -13,7 +13,11 @@ class downloadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _widgetlist = [const _downloads(), const section2(), const Section4()];
+    final _widgetlist = [
+      const _downloads(),
+      const section2(),
+      const Section4()
+    ];
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
@@ -83,41 +87,58 @@ class section2 extends StatelessWidget {
         ),
         BlocBuilder<DownloadsBloc, DownloadsState>(
           builder: (context, state) {
+            if (state.isLoading) {
+              return SizedBox(
+                width: size.width,
+                height: size.width,
+                child: const Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            if (state.downloads.isEmpty) {
+              // Handle the case when the downloads list is empty.
+              // You can show a message or a placeholder widget.
+              return SizedBox(
+                width: size.width,
+                height: size.width,
+                child: const Center(child: Text('No downloads available.')),
+              );
+            }
+
+            // Now, you can safely access the elements of the state.downloads list.
             return SizedBox(
               width: size.width,
               height: size.width,
-              child: state.isLoading
-                  ? const Center(child: CircularProgressIndicator())
-                  : Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.grey.withOpacity(0.5),
-                          radius: size.width * 0.4,
-                        ),
-                        downloadImage(
-                          imageList:
-                              '$appendImage${state.downloads![0].posterPath}',
-                          margin: const EdgeInsets.only(left: 130, bottom: 50),
-                          angle: 20,
-                          size: Size(size.width * 0.4, size.width * 0.58),
-                        ),
-                        downloadImage(
-                          imageList:
-                              '$appendImage${state.downloads![1].posterPath}',
-                          margin: const EdgeInsets.only(right: 130, bottom: 50),
-                          angle: -20,
-                          size: Size(size.width * 0.4, size.width * 0.58),
-                        ),
-                        downloadImage(
-                          imageList:
-                              '$appendImage${state.downloads![2].posterPath}',
-                          margin: const EdgeInsets.only(bottom: 10),
-                          size: Size(size.width * 0.45, size.width * 0.65),
-                          radius: 5,
-                        )
-                      ],
-                    ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.black.withOpacity(0.5),
+                    radius: size.width * 0.4,
+                  ),
+                  downloadImage(
+                    imageList:
+                        '$appendImage${state.downloads[0].posterPath ?? ""}',
+                    margin: const EdgeInsets.only(left: 130, bottom: 50),
+                    angle: 20,
+                    size: Size(size.width * 0.4, size.width * 0.58),
+                  ),
+                  downloadImage(
+                    imageList:
+                        '$appendImage${state.downloads[1].posterPath ?? ""}',
+                    margin: const EdgeInsets.only(right: 130, bottom: 50),
+                    angle: -20,
+                    size: Size(size.width * 0.4, size.width * 0.58),
+                  ),
+                  downloadImage(
+                    imageList:
+                        '$appendImage${state.downloads[2].posterPath ?? ""}',
+                    margin: const EdgeInsets.only(bottom: 10),
+                    size: Size(size.width * 0.45, size.width * 0.65),
+                    radius: 5,
+                  ),
+                ],
+              ),
             );
           },
         ),

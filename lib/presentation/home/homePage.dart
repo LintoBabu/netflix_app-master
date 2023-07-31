@@ -83,24 +83,25 @@ class _homePageState extends State<homePage> {
                         const BackgroundCard(),
                         mainTitlleCards(
                           title: "Released In the past year",
-                          posterList: _releasedPastYear.sublist(0, 10),
+                          posterList: _releasedPastYear,
                         ),
                         kheight,
                         mainTitlleCards(
-                            title: "Trending Now",
-                            posterList: _trendingz.sublist(0, 10)),
+                          title: "Trending Now",
+                          posterList: _trendingz,
+                        ),
                         kheight,
                         NumberTitleCard(
-                          posterList: _TvSHoz.sublist(0, 10),
+                          posterList: _TvSHoz,
                         ),
                         kheight,
                         mainTitlleCards(
-                          posterList: _tenzeDramz.sublist(0, 10),
+                          posterList: _tenzeDramz,
                           title: "Tense Dramas",
                         ),
                         kheight,
                         mainTitlleCards(
-                          posterList: _southIndiz.sublist(0, 10),
+                          posterList: _southIndiz,
                           title: "South Indian Cinemas",
                         ),
                       ],
