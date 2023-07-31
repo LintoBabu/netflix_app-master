@@ -7,7 +7,7 @@ class mainCarder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       width: 130,
       height: 250,
       decoration: BoxDecoration(

@@ -9,5 +9,5 @@ class FastLaughState with _$FastLaughState {
   }) = _Initial;
 
   factory FastLaughState.initial() =>
-      FastLaughState(videosList: [], isloading: true, isError: false);
+      const FastLaughState(videosList: [], isloading: true, isError: false);
 }

@@ -29,17 +29,17 @@ class ComminSoonWidget extends StatelessWidget {
       children: [
         SizedBox(
           width: 50,
-          height: 450,
+          height: 400,
           child: Column(
             children: [
               Text(
                 month,
-                style: TextStyle(fontSize: 20, color: Colors.grey),
+                style: const TextStyle(fontSize: 20, color: Colors.grey),
               ),
               Text(
                 day,
-                style: TextStyle(
-                    fontSize: 30,
+                style: const TextStyle(
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 4),
               ),
@@ -58,52 +58,49 @@ class ComminSoonWidget extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: FittedBox(
-                      child: Text(
-                        movieName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
                       ),
                     ),
                   ),
+                  const CustomButton(
+                    icon: Icons.notifications_active,
+                    title: "Remind me",
+                    iconSize: 20,
+                    textSize: 12,
+                  ),
+                  kwidth,
+                  const CustomButton(
+                    icon: Icons.info,
+                    title: "info",
+                    iconSize: 20,
+                    textSize: 12,
+                  ),
+                  kwidth,
                 ],
               ),
-              CustomButton(
-                icon: Icons.notifications_active,
-                title: "Remind me",
-                iconSize: 20,
-                textSize: 12,
-              ),
-              kwidth,
-              CustomButton(
-                icon: Icons.info,
-                title: "info",
-                iconSize: 20,
-                textSize: 12,
-              ),
-              kwidth,
-              kheight,
               Text("Comming on $day $month"),
               kheight,
               Text(
                 movieName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 10,
+                  fontSize: 16,
                 ),
               ),
               kheight,
               Text(
                 description,
-                maxLines: 1,
+                maxLines: 5,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.grey),
+                style: const TextStyle(color: Colors.grey),
               )
             ],
           ),

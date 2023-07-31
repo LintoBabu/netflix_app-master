@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
-import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/core/colors/constants.dart';
 import 'package:netflix_app/presentation/search/widgets/title.dart';
 
@@ -13,7 +12,7 @@ class screenSearch extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchTitle(title: "Movies & TV"),
+        const SearchTitle(title: "Movies & TV"),
         kheight,
         Expanded(
           child: BlocBuilder<SearchBloc, SearchState>(
@@ -26,7 +25,7 @@ class screenSearch extends StatelessWidget {
                   crossAxisCount: 3,
                   children: List.generate(20, (index) {
                     final movie = state.seachResultList[index];
-                    return mainCard(imageUrl: movie.PosterImageUrl ?? "");
+                    return mainCard(imageUrl: movie.PosterImageUrl);
                   }));
             },
           ),

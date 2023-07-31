@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:netflix_app/domains/core/failures/main_failure.dart';
 
 import '../../domains/downloads/Models/downloads.dart';
 import '../../domains/downloads/i_downloads.dart';
@@ -24,20 +23,20 @@ ValueNotifier<Set<int>> likeVideosNotifier = ValueNotifier({});
 @injectable
 class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
   FastLaughBloc(
-    IDownloadsRepo _downloadService,
+    IDownloadsRepo downloadService,
   ) : super(FastLaughState.initial()) {
     on<Initialize>((event, emit) async {
       emit(
-        FastLaughState(
+        const FastLaughState(
           videosList: [],
           isloading: true,
           isError: false,
         ),
       );
-      final _result = await _downloadService.getDownloads();
-      final _state = _result.fold(
+      final result = await downloadService.getDownloads();
+      final state = result.fold(
         (l) {
-          return FastLaughState(
+          return const FastLaughState(
             videosList: [],
             isloading: false,
             isError: true,
@@ -49,7 +48,7 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
           isError: false,
         ),
       );
-      emit(_state);
+      emit(state);
     });
 
     on<LikeVideos>((event, emit) async {

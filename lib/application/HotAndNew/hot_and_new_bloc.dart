@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_app/domains/Hotz/hot_and_new_resp/service.dart';
@@ -16,7 +16,7 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
   HotAndNewBloc(this._HotandNewService) : super(HotAndNewState.initial()) {
     on<LoadDataCommingSoon>((event, emit) async {
       emit(
-        HotAndNewState(
+        const HotAndNewState(
           commingSoonList: [],
           EveryOneIsWatchingList: [],
           isLoading: true,
@@ -24,10 +24,10 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
         ),
       );
 
-      final _result = await _HotandNewService.getHotAndMovieData();
+      final result = await _HotandNewService.getHotAndMovieData();
 
-      final newState = _result.fold((MainFailure failure) {
-        return HotAndNewState(
+      final newState = result.fold((MainFailure failure) {
+        return const HotAndNewState(
           commingSoonList: [],
           EveryOneIsWatchingList: [],
           isLoading: false,
@@ -46,7 +46,7 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
 
     on<LoadDataEveryoneWatching>((event, emit) async {
       emit(
-        HotAndNewState(
+        const HotAndNewState(
           commingSoonList: [],
           EveryOneIsWatchingList: [],
           isLoading: true,
@@ -54,10 +54,10 @@ class HotAndNewBloc extends Bloc<HotAndNewEvent, HotAndNewState> {
         ),
       );
 
-      final _result = await _HotandNewService.getHotAndTvData();
+      final result = await _HotandNewService.getHotAndTvData();
 
-      final newState = _result.fold((MainFailure failure) {
-        return HotAndNewState(
+      final newState = result.fold((MainFailure failure) {
+        return const HotAndNewState(
           commingSoonList: [],
           EveryOneIsWatchingList: [],
           isLoading: false,

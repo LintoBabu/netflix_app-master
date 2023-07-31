@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/core/colors/constants.dart';
 import 'package:netflix_app/domains/downloads/Models/downloads.dart';
 import 'package:share_plus/share_plus.dart';
@@ -67,7 +66,7 @@ class VideoListItemz extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: posterPath == null
@@ -86,7 +85,7 @@ class VideoListItemz extends StatelessWidget {
                               likeVideosNotifier.value.remove(_index);
                               likeVideosNotifier.notifyListeners();
                             },
-                            child: VideoAction(
+                            child: const VideoAction(
                               title: "Liked",
                               icons: Icons.favorite,
                             ),
@@ -98,14 +97,14 @@ class VideoListItemz extends StatelessWidget {
                             likeVideosNotifier.value.add(_index);
                             likeVideosNotifier.notifyListeners();
                           },
-                          child: VideoAction(
+                          child: const VideoAction(
                             title: "LOL",
                             icons: Icons.emoji_emotions,
                           ),
                         );
                       },
                     ),
-                    VideoAction(
+                    const VideoAction(
                       title: "My List",
                       icons: Icons.add,
                     ),
@@ -119,12 +118,12 @@ class VideoListItemz extends StatelessWidget {
                           Share.share(movieName);
                         }
                       },
-                      child: VideoAction(
+                      child: const VideoAction(
                         title: "Share",
                         icons: Icons.share,
                       ),
                     ),
-                    VideoAction(
+                    const VideoAction(
                       title: "PLAY",
                       icons: Icons.play_circle,
                     ),
@@ -202,7 +201,7 @@ class _FastLaughVideoPlayerState extends State<FastLaughVideoPlayer> {
                 aspectRatio: _videoPlayerController.value.aspectRatio,
                 child: VideoPlayer(_videoPlayerController),
               )
-            : Center(
+            : const Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
                 ),

@@ -14,13 +14,13 @@ class appBarWidget extends StatelessWidget {
               fontSize: 30,
               fontWeight: FontWeight.bold,
             )),
-        Spacer(),
-        Icon(
+        const Spacer(),
+        const Icon(
           Icons.cast,
           color: Colors.white,
           size: 30,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Container(

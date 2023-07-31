@@ -1,4 +1,5 @@
-import 'package:bloc/bloc.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_app/domains/core/failures/main_failure.dart';
@@ -31,7 +32,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         return;
       }
       emit(
-        SearchState(
+        const SearchState(
           seachResultList: [],
           idleList: [],
           isLoading: true,
@@ -41,7 +42,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final _result = await _downloadService.getDownloads();
       final _state = _result.fold(
         (MainFailure f) {
-          return SearchState(
+          return const SearchState(
             seachResultList: [],
             idleList: [],
             isLoading: false,
@@ -61,7 +62,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
     on<SearchMovies>((event, emit) async {
       emit(
-        SearchState(
+        const SearchState(
           seachResultList: [],
           idleList: [],
           isLoading: true,
@@ -71,7 +72,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final _result =
           await _searchService.SearchMovies(MovieQuery: event.movieQuery);
       final _state = _result.fold((MainFailure f) {
-        return SearchState(
+        return const SearchState(
           seachResultList: [],
           idleList: [],
           isLoading: false,

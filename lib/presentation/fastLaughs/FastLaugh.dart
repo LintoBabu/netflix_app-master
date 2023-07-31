@@ -9,20 +9,20 @@ class FastLaughs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<FastLaughBloc>(context).add(Initialize());
+      BlocProvider.of<FastLaughBloc>(context).add(const Initialize());
     });
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<FastLaughBloc, FastLaughState>(
             builder: (context, state) {
           if (state.isloading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
               ),
             );
           } else if (state.isError) {
-            return Center(
+            return const Center(
               child: Text("Error While getting data"),
             );
             // } else if (state.videoList.isEmpty) {

@@ -19,20 +19,20 @@ class newhotPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(90),
+          preferredSize: const Size.fromHeight(90),
           child: AppBar(
-            title: Text(
+            title: const Text(
               "New & Hot",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
             ),
             backgroundColor: Colors.transparent,
             actions: [
-              Icon(
+              const Icon(
                 Icons.cast,
                 color: Colors.white,
                 size: 30,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Container(
@@ -48,12 +48,12 @@ class newhotPage extends StatelessWidget {
               unselectedLabelColor: Colors.white,
               isScrollable: true,
               indicatorColor: Colors.white,
-              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               indicator: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
               ),
-              tabs: [
+              tabs: const [
                 Tab(
                   text: "🍿 Comming Soon",
                 ),
@@ -64,7 +64,7 @@ class newhotPage extends StatelessWidget {
             ),
           ),
         ),
-        body: TabBarView(children: [
+        body: const TabBarView(children: [
           ComminSoonList(
             key: Key('coming_soon'),
           ),
@@ -78,36 +78,36 @@ class newhotPage extends StatelessWidget {
 }
 
 class ComminSoonList extends StatelessWidget {
-  ComminSoonList({Key? key}) : super(key: key);
+  const ComminSoonList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      BlocProvider.of<HotAndNewBloc>(context).add(LoadDataCommingSoon());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataCommingSoon());
     });
     return RefreshIndicator(
       onRefresh: () async {
-        BlocProvider.of<HotAndNewBloc>(context).add(LoadDataCommingSoon());
+        BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataCommingSoon());
       },
       child: BlocBuilder<HotAndNewBloc, HotAndNewState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
               ),
             );
           } else if (state.hasError) {
-            return Center(child: Text('Data is not available'));
+            return const Center(child: Text('Data is not available'));
           } else if (state.commingSoonList.isEmpty) {
-            return Center(child: Text('Data is Empty'));
+            return const Center(child: Text('Data is Empty'));
           } else {
             return ListView.builder(
                 itemCount: state.commingSoonList.length,
                 itemBuilder: (BuildContext context, index) {
                   final movie = state.commingSoonList[index];
                   if (movie.id == null) {
-                    return SizedBox();
+                    return const SizedBox();
                   }
                   log(movie.releaseDate.toString());
                   String month = '';
@@ -143,37 +143,37 @@ class ComminSoonList extends StatelessWidget {
 }
 
 class EveryonesWatchingz extends StatelessWidget {
-  EveryonesWatchingz({Key? key}) : super(key: key);
+  const EveryonesWatchingz({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      BlocProvider.of<HotAndNewBloc>(context).add(LoadDataEveryoneWatching());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataEveryoneWatching());
     });
     return RefreshIndicator(
       onRefresh: () async {
-        BlocProvider.of<HotAndNewBloc>(context).add(LoadDataEveryoneWatching());
+        BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataEveryoneWatching());
       },
       child: BlocBuilder<HotAndNewBloc, HotAndNewState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
               ),
             );
           } else if (state.hasError) {
-            return Center(child: Text('Data is not available'));
+            return const Center(child: Text('Data is not available'));
           } else if (state.EveryOneIsWatchingList.isEmpty) {
-            return Center(child: Text('Data is Empty'));
+            return const Center(child: Text('Data is Empty'));
           } else {
             return ListView.builder(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 itemCount: state.EveryOneIsWatchingList.length,
                 itemBuilder: (BuildContext context, index) {
                   final movie = state.EveryOneIsWatchingList[index];
                   if (movie.id == null) {
-                    return SizedBox();
+                    return const SizedBox();
                   }
                   final tv = state.EveryOneIsWatchingList[index];
                   return EveryonesWatchingWidget(

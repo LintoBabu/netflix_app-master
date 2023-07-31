@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_app/domains/core/failures/main_failure.dart';
@@ -23,12 +23,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       //get Data
 
-      final _movieResult = await _homeService.getHotAndMovieData();
-      final _tvResult = await _homeService.getHotAndTvData();
+      final movieResult = await _homeService.getHotAndMovieData();
+      final tvResult = await _homeService.getHotAndTvData();
 
       //transfom data
 
-      final _state1 = _movieResult.fold(
+      final state1 = movieResult.fold(
         (MainFailure failure) {
           return HomeState(
             stateId: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -62,9 +62,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
         },
       );
-      emit(_state1);
+      emit(state1);
 
-      final _state2 = _tvResult.fold(
+      final state2 = tvResult.fold(
         (MainFailure failure) {
           return HomeState(
             stateId: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -91,7 +91,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
         },
       );
-      emit(_state2);
+      emit(state2);
       //send to UI
     });
   }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/colors/constants.dart';
-
 class VideoWidget extends StatelessWidget {
   final String url;
   const VideoWidget({
@@ -24,7 +22,7 @@ class VideoWidget extends StatelessWidget {
               if (progress == null) {
                 return child;
               } else {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
                   ),
@@ -32,7 +30,7 @@ class VideoWidget extends StatelessWidget {
               }
             },
             errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
-              return Center(
+              return const Center(
                 child: Icon(
                   Icons.wifi,
                   color: Colors.white,

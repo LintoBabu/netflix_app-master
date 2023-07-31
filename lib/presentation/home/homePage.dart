@@ -1,18 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/application/homePage/home_bloc.dart';
 import 'package:netflix_app/core/colors/constants.dart';
 import 'package:netflix_app/presentation/home/widgets/backgroundCard.dart';
-import 'package:netflix_app/presentation/home/widgets/CustomButtonWidget.dart';
-import 'package:netflix_app/presentation/home/widgets/numberCard.dart';
 import 'package:netflix_app/presentation/home/widgets/NumberTitlecard.dart';
-import 'package:netflix_app/presentation/widgets/mainCard.dart';
-import 'package:netflix_app/presentation/widgets/mainTitle.dart';
 
-import '../search/widgets/search_result.dart';
 import '../widgets/maintitleCards.dart';
 
 ValueNotifier<bool> ScrollNotifier = ValueNotifier(true);
@@ -27,8 +20,8 @@ class homePage extends StatefulWidget {
 class _homePageState extends State<homePage> {
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      BlocProvider.of<HomeBloc>(context).add(GetHomeScreenData());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HomeBloc>(context).add(const GetHomeScreenData());
     });
     return Scaffold(
       body: ValueListenableBuilder(
@@ -49,13 +42,13 @@ class _homePageState extends State<homePage> {
                 BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state) {
                     if (state.isLoading) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                         ),
                       );
                     } else if (state.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text("there is no Data Available"),
                       );
                     }
@@ -87,7 +80,7 @@ class _homePageState extends State<homePage> {
                     _TvSHoz.shuffle();
                     return ListView(
                       children: [
-                        BackgroundCard(),
+                        const BackgroundCard(),
                         mainTitlleCards(
                           title: "Released In the past year",
                           posterList: _releasedPastYear.sublist(0, 10),
@@ -98,7 +91,7 @@ class _homePageState extends State<homePage> {
                             posterList: _trendingz.sublist(0, 10)),
                         kheight,
                         NumberTitleCard(
-                          posterList: _TvSHoz.sublist(0,10),
+                          posterList: _TvSHoz.sublist(0, 10),
                         ),
                         kheight,
                         mainTitlleCards(
@@ -116,7 +109,7 @@ class _homePageState extends State<homePage> {
                 ),
                 ScrollNotifier.value == true
                     ? AnimatedContainer(
-                        duration: Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 1000),
                         width: double.infinity,
                         height: 90,
                         color: Colors.black.withOpacity(0.3),
@@ -129,13 +122,13 @@ class _homePageState extends State<homePage> {
                                   width: 60,
                                   height: 60,
                                 ),
-                                Spacer(),
-                                Icon(
+                                const Spacer(),
+                                const Icon(
                                   Icons.cast,
                                   color: Colors.white,
                                   size: 30,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Container(

@@ -15,8 +15,8 @@ class searchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      BlocProvider.of<SearchBloc>(context).add(Initialize());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<SearchBloc>(context).add(const Initialize());
     });
     return Scaffold(
       body: Padding(
@@ -35,24 +35,24 @@ class searchPage extends StatelessWidget {
                 });
               },
               backgroundColor: Colors.grey.withOpacity(0.4),
-              suffixIcon: Icon(
+              suffixIcon: const Icon(
                 CupertinoIcons.xmark_circle_fill,
                 color: Colors.grey,
               ),
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 CupertinoIcons.search,
                 color: Colors.grey,
               ),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             kheight,
             Expanded(
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
                   if (state.seachResultList.isEmpty) {
-                    return SearchIdle();
+                    return const SearchIdle();
                   } else {
-                    return screenSearch();
+                    return const screenSearch();
                   }
                 },
               ),

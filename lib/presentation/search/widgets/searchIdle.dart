@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
-import 'package:netflix_app/application/Search/bloc/search_bloc.dart';
 import 'package:netflix_app/core/colors/constants.dart';
 import 'package:netflix_app/presentation/search/widgets/title.dart';
 
@@ -19,7 +18,7 @@ class _SearchIdleState extends State<SearchIdle> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SearchTitle(
+        const SearchTitle(
           title: "Top Search",
         ),
         kheight,
@@ -27,15 +26,15 @@ class _SearchIdleState extends State<SearchIdle> {
           child: BlocBuilder<SearchBloc, SearchState>(
             builder: (context, state) {
               if (state.isLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state.isError) {
-                return Center(
+                return const Center(
                   child: Text("Error When getting Data"),
                 );
               } else if (state.idleList.isEmpty) {
-                return Center(
+                return const Center(
                   child: Text("List is Empty"),
                 );
               }
@@ -76,16 +75,16 @@ class TopSearchItemTile extends StatelessWidget {
                 image: NetworkImage(imageUrl), fit: BoxFit.cover),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 6,
         ),
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
-        CircleAvatar(
+        const CircleAvatar(
           backgroundColor: Colors.white,
           radius: 27,
           child: CircleAvatar(

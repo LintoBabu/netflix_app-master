@@ -13,7 +13,7 @@ class downloadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _widgetlist = [const _downloads(), section2(), const Section4()];
+    final _widgetlist = [const _downloads(), const section2(), const Section4()];
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
@@ -22,7 +22,7 @@ class downloadPage extends StatelessWidget {
         ),
       ),
       body: ListView.separated(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         separatorBuilder: (context, index) => _widgetlist[index],
         itemBuilder: (context, index) => const SizedBox(height: 25),
         itemCount: _widgetlist.length,
@@ -32,34 +32,32 @@ class downloadPage extends StatelessWidget {
 }
 
 class _downloads extends StatelessWidget {
-  const _downloads({
-    super.key,
-  });
+  const _downloads();
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        const Icon(
+      children: const [
+        Icon(
           Icons.settings,
           color: kWhiteColor,
         ),
-        const SizedBox(
+        SizedBox(
           width: 10,
         ),
-        const Text("Smart Downloads")
+        Text("Smart Downloads")
       ],
     );
   }
 }
 
 class section2 extends StatelessWidget {
-  section2({Key? key}) : super(key: key);
+  const section2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloads());
     });
@@ -89,7 +87,7 @@ class section2 extends StatelessWidget {
               width: size.width,
               height: size.width,
               child: state.isLoading
-                  ? Center(child: const CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : Stack(
                       alignment: Alignment.center,
                       children: [
@@ -129,7 +127,7 @@ class section2 extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
               color: kbuttonColorBlue,
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
                   "Set Up",
@@ -145,7 +143,7 @@ class section2 extends StatelessWidget {
             color: kbuttonColorWhite,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "See what you can download",
@@ -172,7 +170,7 @@ class Section4 extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
             color: Colors.deepPurpleAccent,
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "Set Up",
@@ -187,7 +185,7 @@ class Section4 extends StatelessWidget {
             color: kbuttonColorWhite,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "See what you can download",

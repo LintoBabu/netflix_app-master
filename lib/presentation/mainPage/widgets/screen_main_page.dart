@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/presentation/fastLaughs/FastLaugh.dart';
 import 'package:netflix_app/presentation/home/homePage.dart';
 import 'package:netflix_app/presentation/mainPage/widgets/bottom_navigation.dart';
@@ -11,11 +10,11 @@ import '../../new&hot/new&hotPage.dart';
 class screenMainpage extends StatelessWidget {
   screenMainpage({Key? key}) : super(key: key);
   final _pages = [
-    homePage(),
-    newhotPage(),
-    FastLaughs(),
+    const homePage(),
+    const newhotPage(),
+    const FastLaughs(),
     searchPage(),
-    downloadPage()
+    const downloadPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class screenMainpage extends StatelessWidget {
               return _pages[value];
             }),
       ),
-      bottomNavigationBar: bottomNavigation(),
+      bottomNavigationBar: const bottomNavigation(),
     );
   }
 }
