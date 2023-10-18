@@ -136,8 +136,14 @@ class _homePageState extends State<homePage> {
                                   height: 30,
                                   width: 30,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.blue),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  child: Image.network(
+                                    "https://cdn-images-1.medium.com/v2/resize:fit:1200/1*ty4NvNrGg4ReETxqU2N3Og.png",
+                                    width: 60,
+                                    height: 60,
+                                  ),
                                 ),
                                 kwidth
                               ],
